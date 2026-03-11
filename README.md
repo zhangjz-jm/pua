@@ -189,6 +189,11 @@ Codex CLI 使用相同的 Agent Skills 开放标准（SKILL.md）。Codex 版本
 mkdir -p ~/.codex/skills/pua-debugging
 curl -o ~/.codex/skills/pua-debugging/SKILL.md \
   https://raw.githubusercontent.com/tanweai/pua/main/codex/pua-debugging/SKILL.md
+  
+# 如果需要 /pua 指令的话
+mkdir -p ~/.codex/prompts
+curl -o ~/.codex/prompts/pua.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/commands/pua.md
 ```
 
 项目级安装（仅当前项目生效）：
@@ -197,6 +202,11 @@ curl -o ~/.codex/skills/pua-debugging/SKILL.md \
 mkdir -p .agents/skills/pua-debugging
 curl -o .agents/skills/pua-debugging/SKILL.md \
   https://raw.githubusercontent.com/tanweai/pua/main/codex/pua-debugging/SKILL.md
+
+# 如果需要 /pua 指令的话
+mkdir -p .agents/prompts
+curl -o .agents/prompts/pua.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/commands/pua.md
 ```
 
 ## 搭配使用
