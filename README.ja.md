@@ -1,7 +1,7 @@
 # pua
 
 <p align="center">
-  <img src="assets/hero.jpeg" alt="PUA Skill — 効率倍増" width="500">
+  <img src="assets/hero.jpeg" alt="PUA Skill — 効率倍増" width="250">
 </p>
 
 ### Codex / Claude Code の生産性とアウトプットを倍増させる

@@ -1,7 +1,7 @@
 # pua
 
 <p align="center">
-  <img src="assets/hero.jpeg" alt="PUA Skill — 效率翻倍" width="500">
+  <img src="assets/hero.jpeg" alt="PUA Skill — 效率翻倍" width="250">
 </p>
 
 ### 让你的 Codex / Claude Code 工作效率翻倍，产出翻倍

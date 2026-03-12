@@ -1,7 +1,7 @@
 # pua
 
 <p align="center">
-  <img src="assets/hero.jpeg" alt="PUA Skill — Double Efficiency" width="500">
+  <img src="assets/hero.jpeg" alt="PUA Skill — Double Efficiency" width="250">
 </p>
 
 ### Double your Codex / Claude Code productivity and output
