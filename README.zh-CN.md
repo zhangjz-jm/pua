@@ -260,6 +260,10 @@ curl -o .kiro/skills/pua-debugging/SKILL.md \
 OpenClaw 使用相同的 AgentSkills 开放标准（SKILL.md）。Skill 文件在 Claude Code、Codex CLI、OpenClaw 之间零修改通用：
 
 ```bash
+# 通过 ClawHub 安装
+clawhub install pua-debugging
+
+# 或手动安装
 mkdir -p ~/.openclaw/skills/pua-debugging
 curl -o ~/.openclaw/skills/pua-debugging/SKILL.md \
   https://raw.githubusercontent.com/tanweai/pua/main/skills/pua-debugging/SKILL.md

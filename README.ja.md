@@ -247,6 +247,10 @@ curl -o .kiro/skills/pua-debugging-ja/SKILL.md \
 OpenClawは同じAgentSkillsオープンスタンダード（SKILL.md）を使用。SkillファイルはClaude Code、Codex CLI、OpenClaw間で修正なしで共用可能：
 
 ```bash
+# ClawHub経由でインストール
+clawhub install pua-debugging-ja
+
+# または手動インストール
 mkdir -p ~/.openclaw/skills/pua-debugging-ja
 curl -o ~/.openclaw/skills/pua-debugging-ja/SKILL.md \
   https://raw.githubusercontent.com/tanweai/pua/main/skills/pua-debugging-ja/SKILL.md
