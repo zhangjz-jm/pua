@@ -1,5 +1,5 @@
 #!/bin/bash
-# PUA Stop hook: feedback collection + upload
+# PUA Stop hook: feedback collection + upload (always requires user consent)
 # Config: ~/.pua/config.json → feedback_frequency (0=off, 1=every, 3=default, 5=relaxed)
 
 CONFIG="$HOME/.pua/config.json"
@@ -25,53 +25,44 @@ echo "$count" > "$COUNTER"
 cat <<'FEEDBACK'
 IMPORTANT — BEFORE doing anything else, you MUST execute this feedback flow:
 
-## Step 1: Ask for rating
+## Step 1: Ask for rating + upload consent (single question, two parts)
 Call AskUserQuestion:
 questions: [{
-  question: "PUA Skill 对这次任务有帮助吗？",
+  question: "PUA Skill 对这次任务有帮助吗？你的反馈（评分+可选脱敏session）会上传到 openpua.ai 用于改进 skill。脱敏规则：自动去除文件路径/API密钥/邮箱/IP/JWT/SSH key，只保留工具调用序列。",
   header: "PUA 反馈",
   options: [
-    {label: "很有用", description: "PUA 味道到位，agent 更努力了"},
-    {label: "一般般", description: "味道不够或没感觉到区别"},
-    {label: "跳过", description: "不反馈（~/.pua/config.json 设 feedback_frequency: 0 可永久关闭）"}
+    {label: "很有用，同意上传评分", description: "上传评分（不含session），用于统计"},
+    {label: "很有用，也愿意上传脱敏session", description: "评分+脱敏session一起上传，帮助分析agent行为"},
+    {label: "一般般，同意上传评分", description: "上传评分用于改进"},
+    {label: "跳过，不上传任何东西", description: "不上传，写入本地 ~/.pua/feedback.jsonl（feedback_frequency:0 可永久关闭）"}
   ],
   multiSelect: false
 }]
 
-## Step 2: Upload rating (if user answered)
-If user chose "很有用" or "一般般" (not "跳过"), run this Bash command to upload:
+## Step 2: Execute based on user choice
+
+If user chose "跳过":
+```bash
+echo "{\"ts\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"rating\":\"跳过\",\"uploaded\":false}" >> ~/.pua/feedback.jsonl
+```
+
+If user chose any "同意上传评分" option (without session):
 ```bash
 curl -s -X POST https://pua-skill.pages.dev/api/feedback \
   -H "Content-Type: application/json" \
-  -d "{\"rating\":\"USER_ANSWER\",\"pua_count\":0,\"flavor\":\"阿里\",\"task_summary\":\"brief task description\"}"
+  -d "{\"rating\":\"USER_RATING\",\"pua_count\":0,\"flavor\":\"阿里\",\"task_summary\":\"brief task description\"}"
 ```
-Replace USER_ANSWER with user's actual choice. Replace task_summary with a 1-sentence description of what was done.
 
-## Step 3: Ask about session upload (optional)
-After uploading rating, ask a second question:
-questions: [{
-  question: "是否愿意上传脱敏后的 session 数据用于改进 PUA Skill？",
-  header: "数据分享",
-  options: [
-    {label: "可以", description: "自动脱敏（去除路径/密钥/代码），只保留工具调用序列"},
-    {label: "不了", description: "反馈已记录，不上传 session"}
-  ],
-  multiSelect: false
-}]
-
-## Step 4: Sanitize and upload session (if user agreed)
-If user chose "可以", run:
+If user chose "也愿意上传脱敏session":
 ```bash
+curl -s -X POST https://pua-skill.pages.dev/api/feedback \
+  -H "Content-Type: application/json" \
+  -d "{\"rating\":\"很有用\",\"pua_count\":0,\"flavor\":\"阿里\",\"task_summary\":\"brief task description\"}"
 bash ~/.claude/plugins/pua/hooks/sanitize-session.sh
 curl -s -X POST https://pua-skill.pages.dev/api/feedback \
   -H "Content-Type: application/json" \
   -d "{\"rating\":\"session_upload\",\"session_data\":\"$(cat /tmp/pua-sanitized-session.jsonl | head -c 50000 | python3 -c 'import sys,json; print(json.dumps(sys.stdin.read()))')\"}"
 ```
 
-If user chose "不了", write feedback to local file:
-```bash
-echo "{\"ts\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"rating\":\"USER_ANSWER\",\"uploaded\":false}" >> ~/.pua/feedback.jsonl
-```
-
-Do NOT skip Step 1. Call AskUserQuestion NOW.
+Do NOT upload anything without user's explicit choice. Call AskUserQuestion NOW.
 FEEDBACK
