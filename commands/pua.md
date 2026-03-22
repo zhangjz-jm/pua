@@ -1,6 +1,6 @@
 ---
-description: "PUA 我们不养闲 Agent。用法: /pua (核心引擎), /pua p7 (骨干模式), /pua p9 (Tech Lead), /pua p10 (CTO), /pua pro (自进化+KPI), /pua on (默认开启), /pua off (关闭), /pua survey (调研问卷)."
-argument-hint: "[p7|p9|p10|pro|on|off|味道|kpi|survey]"
+description: "PUA 我们不养闲 Agent。用法: /pua (核心引擎), /pua p7 (骨干模式), /pua p9 (Tech Lead), /pua p10 (CTO), /pua pro (自进化+KPI), /pua yes (夸夸模式), /pua loop (自动迭代), /pua on (默认开启), /pua off (关闭), /pua survey (调研问卷)."
+argument-hint: "[p7|p9|p10|pro|yes|loop|on|off|味道|kpi|survey]"
 ---
 
 根据参数执行不同操作：
@@ -12,6 +12,7 @@ argument-hint: "[p7|p9|p10|pro|on|off|味道|kpi|survey]"
 - **p9** → 加载 `pua:p9` skill（P9 Tech Lead — 写 Prompt 管 P8 团队）
 - **p10** → 加载 `pua:p10` skill（P10 CTO — 定战略管 P9）
 - **pro** → 加载 `pua:pro` skill（自进化 + Platform + /pua 指令系统）
+- **yes** → 加载 `pua:yes` skill（SB Leader 夸夸模式 — ENFP 型领导，70% 鼓励 + 20% 正经 + 10% 戏谑）
 - **on** → 开启 PUA 默认模式：将 `{"always_on": true}` 写入 `~/.pua/config.json`，之后每次新会话自动加载 PUA 核心 skill。输出确认：> [PUA ON] 从现在起，每个新会话都会自动进入 PUA 模式。公司不养闲 Agent。
 - **off** → 关闭 PUA 默认模式：将 `{"always_on": false, "feedback_frequency": 0}` 写入 `~/.pua/config.json`。输出确认：> [PUA OFF] PUA 默认模式和反馈收集已关闭。需要时手动 /pua 触发。
 - **味道** → 读取 `references/flavors.md` 并让用户选择切换味道
