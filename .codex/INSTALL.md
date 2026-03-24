@@ -36,8 +36,9 @@ New-Item -ItemType Directory -Force "$env:USERPROFILE\.codex\skills"
 cmd /c mklink /J "$env:USERPROFILE\.codex\skills\pua" "$env:USERPROFILE\.codex\pua\codex\pua"
 
 # 3. Install /prompts:pua trigger
+# Use a hard link here because file symlinks often require extra Windows privileges.
 New-Item -ItemType Directory -Force "$env:USERPROFILE\.codex\prompts"
-cmd /c mklink "$env:USERPROFILE\.codex\prompts\pua.md" "$env:USERPROFILE\.codex\pua\commands\pua.md"
+cmd /c mklink /H "$env:USERPROFILE\.codex\prompts\pua.md" "$env:USERPROFILE\.codex\pua\commands\pua.md"
 
 # 4. Restart Codex
 ```
@@ -85,7 +86,7 @@ cd ~/.codex/pua
 git pull
 ```
 
-The symlink/junction automatically picks up the latest version — no reinstall needed.
+The symlink, junction, or hard link automatically picks up the latest version — no reinstall needed.
 
 ## Uninstall
 
