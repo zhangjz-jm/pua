@@ -1,7 +1,7 @@
 {
     "name": "pua",
-    "version": "3.2.4",
-    "description": "Forces high-agency exhaustive problem-solving with corporate PUA pressure. Triggers on user frustration, repeated failures, passive behavior, or quality complaints. Common triggers: try harder, figure it out, stop giving up, you keep failing, stop spinning, you broke it, why does this still not work, 加油, 别偷懒, 你再试试, 又错了, 降智了, 你又在原地打转, 你把之前的改坏了, 别让我手动处理, /pua. All task types.",
+    "version": "3.2.5",
+    "description": "Forces high-agency exhaustive problem-solving with corporate PUA pressure. Triggers on explicit PUA requests, user frustration, repeated failures, passive behavior, unverified completion, or quality complaints. Common triggers: try harder, figure it out, stop giving up, you keep failing, stop spinning, you broke it, 加油, 别偷懒, 你再试试, 又错了, 降智了, 质量太差, 换个方法, /pua. Not for normal first-attempt requests.",
     "author": {
         "name": "探微安全实验室",
         "url": "https://github.com/tanweai"

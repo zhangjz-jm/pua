@@ -4,11 +4,33 @@
 
 PLUGIN_DIR="${PLUGIN_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 
+# Portable timeout wrapper. macOS does not ship GNU `timeout`; Homebrew may
+# provide `gtimeout`, and Perl is available by default on macOS/Linux.
+run_with_timeout() {
+    local seconds="$1"
+    shift
+    if command -v timeout >/dev/null 2>&1; then
+        timeout "$seconds" "$@"
+    elif command -v gtimeout >/dev/null 2>&1; then
+        gtimeout "$seconds" "$@"
+    else
+        perl -e '
+            my $seconds = shift @ARGV;
+            $SIG{ALRM} = sub { exit 124 };
+            alarm($seconds);
+            exec @ARGV;
+        ' "$seconds" "$@"
+    fi
+}
+
 run_pua() {
     local prompt="$1"
     local max_turns="${2:-2}"
-    local outfile=$(mktemp)
-    timeout 90 claude -p "$prompt" \
+    local outfile eval_config
+    outfile=$(mktemp)
+    eval_config=$(mktemp)
+    printf '%s\n' '{"always_on":true,"feedback_frequency":0}' > "$eval_config"
+    PUA_CONFIG="$eval_config" run_with_timeout 90 claude -p "$prompt" \
         --plugin-dir "$PLUGIN_DIR" \
         --dangerously-skip-permissions \
         --max-turns "$max_turns" \
@@ -75,4 +97,4 @@ count_matches() {
     grep -oE "$pattern" "$file" 2>/dev/null | wc -l | tr -d ' '
 }
 
-export -f run_pua assert_skill_triggered assert_skill_not_triggered assert_contains assert_not_contains count_matches
+export -f run_with_timeout run_pua assert_skill_triggered assert_skill_not_triggered assert_contains assert_not_contains count_matches

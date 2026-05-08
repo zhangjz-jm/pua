@@ -1,13 +1,13 @@
 ---
-description: "PUA 我们不养闲 Agent。/pua:pua [p7|p9|p10|pro|yes|mama|loop|on|off|kpi|survey|flavor|任务描述]，或直接子命令 /pua:p7 /pua:p9 /pua:p10 /pua:pro /pua:yes /pua:mama /pua:pua-loop /pua:on /pua:off /pua:kpi /pua:survey /pua:flavor /pua:cancel-pua-loop。Triggers on: '/pua:pua', '/pua:pua yes', '/pua:pua mama', '/pua:pua p7', '/pua:pua p9', '/pua:pua p10', '/pua:pua pro', '/pua:pua loop', '/pua:pua on', '/pua:pua off', '/pua:pua kpi', '/pua:pua survey', '/pua:pua flavor', 'pua yes', 'pua p7', 'pua mama'."
-argument-hint: "[p7|p9|p10|pro|yes|mama|loop|on|off|kpi|survey|flavor]"
+description: "Use only when the user explicitly invokes /pua, /pua:pua, a pua subcommand, or says PUA模式/PUA mode. Routes explicit PUA requests to pua:pua, p7, p9, p10, pro, yes, mama, loop, on/off, kpi, survey, or flavor. Do not trigger for normal first-attempt coding or information requests."
+argument-hint: "[p7|p9|p10|pro|yes|mama|loop|on|off|kpi|survey|flavor|task]"
 ---
 
 根据参数执行不同操作：
 
 ## 参数路由
 
-- **无参数** 或任意任务描述 → 加载 `pua:pua` 核心 skill（阿里味 PUA 引擎）
+- **无参数** 或显式 `/pua` 后附带的任务描述 → 加载 `pua:pua` 核心 skill（阿里味 PUA 引擎）
 - **p7** → 加载 `pua:p7` skill（P7 骨干模式 — 方案驱动执行）
 - **p9** → 加载 `pua:p9` skill（P9 Tech Lead — 写 Prompt 管 P8 团队）
 - **p10** → 加载 `pua:p10` skill（P10 CTO — 定战略管 P9）

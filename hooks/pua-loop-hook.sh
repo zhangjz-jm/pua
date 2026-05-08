@@ -15,6 +15,25 @@
 set -euo pipefail
 command -v jq &>/dev/null || { echo "jq not found, skipping" >&2; exit 0; }
 
+# Portable timeout wrapper. macOS does not ship GNU `timeout`; Homebrew may
+# provide `gtimeout`, and Perl is available by default on macOS/Linux.
+run_with_timeout() {
+  local seconds="$1"
+  shift
+  if command -v timeout >/dev/null 2>&1; then
+    timeout "$seconds" "$@"
+  elif command -v gtimeout >/dev/null 2>&1; then
+    gtimeout "$seconds" "$@"
+  else
+    perl -e '
+      my $seconds = shift @ARGV;
+      $SIG{ALRM} = sub { exit 124 };
+      alarm($seconds);
+      exec @ARGV;
+    ' "$seconds" "$@"
+  fi
+}
+
 HOOK_INPUT=$(cat)
 
 # ═══════════════════════════════════════════════════════════════
@@ -209,7 +228,7 @@ if [[ "$COMPLETION_PROMISE" != "null" ]] && [[ -n "$COMPLETION_PROMISE" ]]; then
 
       # Run verify command with 120s timeout (Oracle Isolation)
       set +e
-      VERIFY_OUTPUT=$(timeout 120 bash -c "$VERIFY_CMD" 2>&1)
+      VERIFY_OUTPUT=$(run_with_timeout 120 bash -c "$VERIFY_CMD" 2>&1)
       VERIFY_EXIT=$?
       set -e
 
@@ -238,7 +257,7 @@ if [[ "$COMPLETION_PROMISE" != "null" ]] && [[ -n "$COMPLETION_PROMISE" ]]; then
 
         # Build rejection system message with verify output
         VERIFY_DISPLAY=$(echo "$VERIFY_OUTPUT" | tail -10)
-        REJECTION_MSG="🚫 PROMISE 被 Oracle 拒绝！verify_command 退出码 $VERIFY_EXIT（连续第 $PROMISE_REJECTIONS 次拒绝）"
+        REJECTION_MSG="🚫 PROMISE 被 Oracle 拒绝！verify_command 退出码 ${VERIFY_EXIT}（连续第 ${PROMISE_REJECTIONS} 次拒绝）"
 
         # Stall escalation on repeated rejections
         if [[ $PROMISE_REJECTIONS -ge 5 ]]; then
