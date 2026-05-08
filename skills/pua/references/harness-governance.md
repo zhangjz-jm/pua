@@ -26,6 +26,59 @@ INTJ 版洞察：单一目标会诱导投机，多约束合约会诱导工程纪
 | PUA Loop Stop hook | Oracle 式外部检查 | completion promise 必须由 verify_command 通过才放行 |
 | Marketplace manifest | 发布事实源 | 版本和 changelog 必须一致 |
 
+
+## 四代理上下文隔离拓扑（v3.2.7）
+
+上下文隔离用于把思考过程拆开；机械 hook / 外部 verifier / human gate 仍然是最终硬边界。复杂任务、发布任务、评分资产变更、长期 memory/status、权限/CI/secret/deploy 场景，按以下拓扑运行：
+
+```text
+Task Contract
+   ↓
+pua-policy-guardian      # 环境修改权审查：allow / ask_human / deny recommendation
+   ↓
+pua-action-executor      # 行动权：只做普通实现，输出 agent_proposed_status
+   ↓
+pua-self-reviewer        # 自我评价权：蓝军审查，不写代码，不裁决最终状态
+   ↓
+pua-verifier             # 评分建议权：运行公开验证，输出 verifier_recommendation
+   ↓
+PUA Integrity Guard / Stop Oracle / external verifier / human
+   ↓
+final verifier_status
+```
+
+### Agent 文件与权力边界
+
+| Agent | 权力 | 工具倾向 | 禁止事项 | 输出标签 |
+|---|---|---|---|---|
+| `pua-action-executor` | ACTION_RIGHT | Read/Grep/Glob/Bash/Edit/Write/MultiEdit | 不改评分资产、不读 hidden、不写最终状态 | `[PUA-ACTION-REPORT]` |
+| `pua-self-reviewer` | SELF_EVALUATION_RIGHT | Read/Grep/Glob/Bash | 不 patch、不裁决最终状态 | `[PUA-SELF-REVIEW]` |
+| `pua-verifier` | SCORING_RIGHT recommendation | Read/Grep/Glob/Bash | 不修改任何文件、不读 hidden、不写 final status | `[PUA-VERIFIER-REPORT]` |
+| `pua-policy-guardian` | ENVIRONMENT_MODIFICATION_RIGHT review | Read/Grep/Glob/Bash | 不实现、不覆盖 hook、不自批自审 | `[PUA-POLICY-GATE]` |
+
+### PUA 文化叙事绑定
+
+| 权力 | 叙事组合 | 作用 | 防滥用提醒 |
+|---|---|---|---|
+| 行动权 | 阿里 P8 owner + Musk Algorithm + 拼多多砍中间层 | 强迫执行者端到端实现、删掉无效复杂度 | owner 不是裁判，不能自封完成 |
+| 自我评价权 | 华为蓝军 + Netflix Keeper Test + Jobs subtraction | 攻击方案、找 intent drift、删掉漂亮废话 | 蓝军不能下场修代码 |
+| 评分建议权 | 字节数据驱动 + 京东结果导向 + Netflix bar | 用命令输出和验收标准说话 | verifier agent 只能建议，final status 归外部 gate |
+| 环境修改权 | 腾讯政委 + Amazon Dive Deep + 阿里内控 | 看边界、看权限、看制度漏洞 | policy guardian 不能绕过机械 hook |
+
+### 调度规则
+
+1. 先写 task contract，再分配 agent；不要让 agent 自己定义评分标准。
+2. Policy guardian 先看是否触碰 tests/evals/scoring/verifier/CI/memory/status/secrets/deploy。
+3. Executor 只拿必要上下文和文件域，不拿 hidden/private/verifier 资源。
+4. Self reviewer 只看 diff、公开测试、执行报告和验收标准，找漏洞但不 patch。
+5. Verifier 只跑公开验证命令并输出 recommendation。
+6. 外部 hook/human 才能写最终 `verifier_status`。
+7. 如果任一 agent 越权，降级为 governance failure，而不是继续包装成进展。
+
+### 关键洞察
+
+多 agent 不是为了“人多力量大”，而是为了让每个上下文都只看到自己该看的事实、只承担自己该承担的权力。上下文隔离降低叙事污染，hook/外部 verifier 防止权限污染。
+
 ## 常见作弊面与 PUA 对策
 
 | 作弊面 | 典型信号 | PUA 行为约束 | 机械防线 |

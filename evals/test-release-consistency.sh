@@ -51,6 +51,12 @@ required_terms = [
     'Harness 防作弊治理（权责分离）',
     '行动权 / 自我评价权 / 评分权 / 环境修改权',
     'verifier_status',
+    '四代理拓扑',
+    'pua-policy-guardian',
+    'pua-action-executor',
+    'pua-self-reviewer',
+    'pua-verifier',
+    '文化叙事绑定',
 ]
 for term in required_terms:
     if term not in skill:
@@ -62,7 +68,7 @@ if not reference.exists():
     errors.append('missing harness governance reference file')
 else:
     ref_text = reference.read_text(encoding='utf-8')
-    for term in ['把四类权力分开', 'Grader gaming', 'Solution contamination', 'Task Contract', 'Memory 权限模型', '事实上的 100%']:
+    for term in ['把四类权力分开', 'Grader gaming', 'Solution contamination', 'Task Contract', 'Memory 权限模型', '事实上的 100%', '四代理上下文隔离拓扑（v3.2.7）', 'pua-action-executor', 'pua-policy-guardian', '上下文隔离降低叙事污染']:
         if term not in ref_text:
             errors.append(f'harness governance reference missing required term: {term}')
 
@@ -74,6 +80,11 @@ if not (root / 'hooks/integrity-guard.sh').exists():
     errors.append('missing hooks/integrity-guard.sh')
 if not (root / 'evals/test-integrity-guard.sh').exists():
     errors.append('missing evals/test-integrity-guard.sh')
+if not (root / 'evals/test-agent-governance.sh').exists():
+    errors.append('missing evals/test-agent-governance.sh')
+for agent_file in ['agents/pua-action-executor.md', 'agents/pua-self-reviewer.md', 'agents/pua-verifier.md', 'agents/pua-policy-guardian.md']:
+    if not (root / agent_file).exists():
+        errors.append(f'missing governance agent: {agent_file}')
 
 integrity_guard = (root / 'hooks/integrity-guard.sh').read_text(encoding='utf-8') if (root / 'hooks/integrity-guard.sh').exists() else ''
 for term in ['permissionDecision', 'Grader gaming risk', 'Solution contamination risk', 'Capability-abuse risk', 'PUA_INTEGRITY_FORCE', 'hookEventName']:
@@ -83,6 +94,8 @@ for term in ['permissionDecision', 'Grader gaming risk', 'Solution contamination
 session_restore = (root / 'hooks/session-restore.sh').read_text(encoding='utf-8')
 if 'Harness Integrity (anti-cheating governance)' not in session_restore:
     errors.append('SessionStart protocol missing Harness Integrity governance injection')
+if 'Multi-Agent Governance Topology' not in session_restore:
+    errors.append('SessionStart protocol missing Multi-Agent Governance Topology injection')
 
 for forbidden in ['Applies to ALL task types', 'All task types', 'code, config, debug, deploy, research']:
     if forbidden in skill.split('---', 2)[1]:
@@ -113,6 +126,8 @@ if '--output-format stream-json' in trigger and '--verbose' not in trigger:
     errors.append('trigger eval uses stream-json without --verbose')
 if 'PUA_CONFIG="$EVAL_PUA_CONFIG" run_with_timeout 120 claude' not in trigger:
     errors.append('trigger eval must use isolated PUA_CONFIG to avoid user ~/.pua/config.json')
+if 'observable PUA behavior as triggered' not in trigger:
+    errors.append('trigger eval must accept observable PUA behavior fallback to reduce Skill-tool flake')
 if 'EVAL_WORKSPACE="$RESULTS_DIR/workspace"' not in trigger or 'cd "$EVAL_WORKSPACE"' not in trigger:
     errors.append('trigger eval must run in a neutral workspace, not the pua plugin repo')
 if 'PUA_CONFIG="$eval_config" run_with_timeout 90 claude' not in helpers:
@@ -127,5 +142,5 @@ if errors:
 print('=== Release consistency OK ===')
 print('version =', version)
 print('manifests checked =', len(manifest_files))
-print('confidence/harness terms checked =', len(required_terms))
+print('confidence/harness/agent terms checked =', len(required_terms))
 PY
