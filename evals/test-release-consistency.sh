@@ -138,6 +138,17 @@ required_paths = [
 for rel in required_paths:
     if not (root / rel).exists():
         errors.append(f'missing issue-sweep asset: {rel}')
+
+# D1 migrations must be idempotent because existing production DBs may predate
+# Wrangler's migration journal. A non-idempotent CREATE INDEX previously made
+# `wrangler d1 migrations apply --remote` fail on 0001 before newer migrations.
+for migration in sorted((root / 'landing/migrations').glob('*.sql')):
+    text_sql = migration.read_text(encoding='utf-8')
+    if 'CREATE INDEX ' in text_sql:
+        for line in text_sql.splitlines():
+            stripped = line.strip().upper()
+            if stripped.startswith('CREATE INDEX ') and not stripped.startswith('CREATE INDEX IF NOT EXISTS '):
+                errors.append(f'D1 migration has non-idempotent index creation: {migration.relative_to(root)}')
 frustration = (root / 'hooks/frustration-trigger.sh').read_text(encoding='utf-8')
 for term in ['TRIGGER_RE', 'PUA Skill Context']:
     if term not in frustration:

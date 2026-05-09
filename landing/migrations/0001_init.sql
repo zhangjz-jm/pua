@@ -9,4 +9,4 @@ CREATE TABLE IF NOT EXISTS uploads (
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
-CREATE INDEX idx_uploads_github ON uploads(github_id);
+CREATE INDEX IF NOT EXISTS idx_uploads_github ON uploads(github_id);
