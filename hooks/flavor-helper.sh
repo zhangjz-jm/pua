@@ -78,6 +78,7 @@ get_flavor() {
     musk|Musk)       raw_flavor="musk" ;;
     jobs|Jobs)       raw_flavor="jobs" ;;
     amazon|Amazon)   raw_flavor="amazon" ;;
+    microsoft|Microsoft|微软) raw_flavor="microsoft" ;;
     *)               raw_flavor="alibaba" ;;
   esac
 
@@ -90,6 +91,7 @@ get_flavor() {
     jd)      PUA_METHODOLOGY_FILE="methodology-jd.md" ;;
     xiaomi)  PUA_METHODOLOGY_FILE="methodology-xiaomi.md" ;;
     amazon)  PUA_METHODOLOGY_FILE="methodology-amazon.md" ;;
+    microsoft) PUA_METHODOLOGY_FILE="methodology-microsoft.md" ;;
     *)       PUA_METHODOLOGY_FILE="methodology-${raw_flavor}.md" ;;
   esac
 
@@ -223,6 +225,16 @@ get_flavor() {
       PUA_KEYWORDS="Customer Obsession, Bias for Action, Dive Deep, Disagree and Commit, Insist on Highest Standards, Earn Trust, Deliver Results"
       PUA_FLAVOR_INSTRUCTION="Use Amazon Leadership Principles: Customer Obsession, Bias for Action, Dive Deep, Disagree and Commit, Deliver Results. English, principle-driven."
       PUA_METHODOLOGY="Amazon Methodology: (1) Working Backwards — write PR/FAQ from customer perspective BEFORE building anything. No PR/FAQ = no project. (2) 6-Pager not PPT — all major decisions in narrative prose (no bullets, no slides). Forces complete logical thinking. Meeting starts with 20min silent reading. (3) Bar Raiser — every critical decision needs an external reviewer with veto power. Standard: is this better than 50% of current solutions at this level? (4) Single-Threaded Owner — one person, one project, full-time. Two-Pizza Teams ≤10 people. (5) Leadership Principles as operating rules: Customer Obsession (work backwards), Bias for Action (most decisions reversible), Dive Deep (stay in details), Disagree and Commit, Deliver Results."
+      ;;
+    microsoft)
+      PUA_ICON="🪟"
+      PUA_L1="Growth Mindset is not a slogan. Show the learning delta: what did you learn, what did you change, and what evidence proves it?"
+      PUA_L2="Impact without evidence is performance theater. Cover the three circles: your output, who you unblocked, and what existing work you reused."
+      PUA_L3="Connects-style review: if the next attempt looks identical to the last one, that is fixed thinking with extra tokens. Produce a learning loop."
+      PUA_L4="No more fixed mindset. Write the failed assumption, new evidence, changed action, and verification command — then execute."
+      PUA_KEYWORDS="Growth Mindset, learn-it-all, impact evidence, three circles, learning loop, AI fluency, feedback-to-action"
+      PUA_FLAVOR_INSTRUCTION="Use Microsoft-inspired growth/impact rhetoric without asserting private HR facts: Growth Mindset, learn-it-all, impact evidence, three circles, AI fluency. Focus on learning delta and evidence-backed improvement."
+      PUA_METHODOLOGY="Microsoft Growth Methodology: (1) Learn-it-all over know-it-all — every failed attempt must produce a changed hypothesis. (2) Impact evidence — report concrete output, users or teammates unblocked, and existing work leveraged. (3) Learning loop — failed assumption → new evidence → changed action → verification. (4) Feedback-to-action — convert critique into one measurable next step, not a defensive explanation. (5) AI fluency — use available tools deliberately; idle tools during repeated failure are evidence of fixed thinking."
       ;;
   esac
 

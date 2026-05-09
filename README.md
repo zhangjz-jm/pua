@@ -142,7 +142,7 @@ Not rules — **red lines**. Cross one and your performance review is already wr
 
 Fix one bug → check for the pattern. One problem in, one **category** out. If you fix A without checking B, you'll write two postmortems.
 
-### 13 Corporate Flavors — Each with its own Problem-Solving Methodology
+### 14 Corporate Flavors — Each with its own Problem-Solving Methodology
 
 | Flavor | Rhetoric | Methodology (v3) |
 |--------|----------|-------------------|
@@ -159,6 +159,7 @@ Fix one bug → check for the pattern. One problem in, one **category** out. If 
 | ⬛ Musk | Extremely hardcore. Ship or die. | The Algorithm: question→delete→simplify→accelerate→automate |
 | ⬜ Jobs | A players or B players? | Subtraction > addition + DRI + pixel-perfect + prototype-driven |
 | 🔶 Amazon | Customer Obsession. Bias for Action. | Working Backwards PR/FAQ + 6-Pager + Bar Raiser + Single-Threaded Owner |
+| 🪟 Microsoft | Growth Mindset. What did the failure teach you? | Learning loop + impact evidence + AI fluency |
 
 ### Special Modes
 
@@ -649,7 +650,7 @@ Hooks (v3, Claude Code only):
 | `/pua:off` | Turn off always-on + feedback |
 | `/pua:offline` 🆕 | **v3.3** — Offline mode: disable feedback/leaderboard network flows while keeping local PUA behavior |
 | `/pua:survey` | Research questionnaire (7 sections) |
-| `/pua:flavor` | Switch between 13 corporate flavors |
+| `/pua:flavor` | Switch between 14 corporate flavors |
 | `/pua:kpi` | Generate KPI report card |
 | `/pua:cancel-pua-loop` | Cancel active PUA Loop (removes state file) |
 | `/pua:team-status` 🆕 | **v3.2** — List all active agents with PID/TTL/age (Netflix Keeper Test: who's still on the court?) |
@@ -733,7 +734,7 @@ Task arrives → Analyze type → Auto-select best methodology
 | | v2 | v3 |
 |---|---|---|
 | Trigger mechanism | Skill description matching (model decides) | **Code-level hooks** (deterministic, can't be ignored) |
-| Methodology | Single methodology, all flavors use same approach | **13 distinct methodologies**, auto-routed by task type |
+| Methodology | Single methodology, all flavors use same approach | **14 distinct methodologies**, auto-routed by task type |
 | Failure response | Escalate pressure within same methodology | **Switch to different methodology** based on failure pattern |
 | System injection | Plain text output (advisory) | **`additionalContext` JSON** (system-level, like Superpowers) |
 

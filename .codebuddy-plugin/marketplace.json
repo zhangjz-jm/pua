@@ -1,7 +1,7 @@
 {
     "name": "pua-skills",
-    "description": "PUA Motivator for CodeBuddy -- high-agency pressure mode for explicit PUA requests, repeated failures, user frustration, passive behavior, or unverified completion.",
-    "version": "3.4.0",
+    "description": "PUA Motivator for CodeBuddy -- high-agency pressure mode for explicit PUA requests, repeated failures, user frustration, passive behavior, unverified completion, with 14 corporate/PIP flavors.",
+    "version": "3.4.1",
     "owner": {
         "name": "探微安全实验室",
         "url": "https://github.com/tanweai"
@@ -9,8 +9,8 @@
     "plugins": [
         {
             "name": "pua",
-            "description": "PUA Motivator -- forces CodeBuddy to exhaust materially different approaches before giving up, with Chinese corporate and English PIP cultural narratives. v3.4.0 adds Trae/pi.dev package assets and authenticated session-feedback handling.",
-            "version": "3.4.0",
+            "description": "PUA Motivator -- forces CodeBuddy to exhaust materially different approaches before giving up, with Chinese corporate and English PIP cultural narratives. v3.4.1 adds optimized Microsoft/Growth Mindset flavor for fixed-thinking failures.",
+            "version": "3.4.1",
             "source": "./"
         }
     ]

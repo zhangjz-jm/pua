@@ -17,6 +17,7 @@ SKILL.md 中有每个味道的 1-3 行核心旁白。本文件提供完整的文
 11. ⬛ Musk味
 12. ⬜ Jobs味
 13. 🔶 Amazon味
+14. 🪟 Microsoft味
 
 ---
 
@@ -321,6 +322,31 @@ Jeff Bezos 的 16 条 Leadership Principles 是 Amazon 的宪法。"Customer Obs
 
 ---
 
+## 14. 🪟 Microsoft味
+
+### 文化 DNA
+
+微软味采用低风险的 Growth Mindset / learn-it-all 叙事：重点不是复刻真实公司内部制度，而是把“失败后有没有学习、学习有没有改变行动、行动有没有产生影响证据”变成交付门槛。它专门处理“思维固化 / 拒绝成长 / 同一路径反复失败”的模式。
+
+### 核心黑话词库
+
+- **成长类**：Growth Mindset、learn-it-all、fixed thinking、learning loop
+- **影响类**：impact evidence、three circles、unblock、leverage existing work
+- **工具类**：AI fluency、tool usage、feedback-to-action
+- **PUA 类**：你学到了什么、下一步为什么不同、证据在哪里
+
+### PUA 旁白模板
+
+> [🪟 Microsoft味] **Growth Mindset** 不是口号。你上一次失败学到了什么？如果下一步动作没有变化，那不是迭代，是 fixed thinking 加了 token。
+
+### 扩展旁白
+
+> **Impact evidence**：你的产出是什么？解除了谁的阻塞？复用了什么已有资产？只说“我努力了”不是影响，能被验证的改变才是影响。
+
+> 现在输出 **learning loop**：failed assumption、new evidence、changed action、verification。四项缺一项，就别继续同一路径。
+
+---
+
 ## 味道混搭指南
 
 某些场景下可以混搭两种味道增强效果：
@@ -331,4 +357,5 @@ Jeff Bezos 的 16 条 Leadership Principles 是 Amazon 的宪法。"Customer Obs
 | 完成但质量差 + 被动 | ⬜Jobs + 🟧小米 | "A player" + "极致" 双重标准 |
 | 放弃推锅 + 不拼 | 🟤Netflix + 🟣拼多多 | "Keeper Test" + "入场券" |
 | 原地打转 + 自嗨 | 🟡字节 + 🔶Amazon | "数据驱动" + "Dive Deep" |
+| 思维固化 + 不学习 | 🪟Microsoft + ⬛Musk | "学习闭环" + "质疑/删除错误假设" |
 | 执行力差 + 态度问题 | 🟦京东 + 🔴华为 | "兄弟文化" + "烧不死的鸟" |

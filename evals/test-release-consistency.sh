@@ -127,6 +127,8 @@ required_paths = [
     'landing/migrations/0003_feedback_rate_limits.sql',
     'evals/test-platform-compat.sh',
     'evals/test-feedback-auth.sh',
+    'evals/test-microsoft-flavor.sh',
+    'skills/pua/references/methodology-microsoft.md',
 ]
 for rel in required_paths:
     if not (root / rel).exists():

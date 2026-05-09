@@ -148,7 +148,7 @@
 4. **执行** — 新方案必须本质不同，有验证标准，失败时产出新信息
 5. **复盘** — 什么解决了？为什么之前没想到？然后主动检查关联问题
 
-### 13 种大厂 PUA 扩展包 — 每种自带方法论
+### 14 种大厂 PUA 扩展包 — 每种自带方法论
 
 | 味道 | 旁白风格 | 方法论 (v3) |
 |------|---------|------------|
@@ -165,6 +165,7 @@
 | ⬛ Musk | Extremely hardcore。上线或滚蛋。 | The Algorithm：质疑→删除→简化→加速→自动化 |
 | ⬜ Jobs | A 级选手还是 B 级选手？ | 做减法 > 做加法 + DRI + 像素级完美 + 原型驱动 |
 | 🔶 Amazon | Customer Obsession。Bias for Action。 | Working Backwards PR/FAQ + 6-Pager + Bar Raiser + Single-Threaded Owner |
+| 🪟 Microsoft | Growth Mindset。失败教会了什么？ | 学习闭环 + 影响证据 + AI 工具熟练度 |
 
 ## 实测数据
 
@@ -700,7 +701,7 @@ Hooks（v3，Claude Code 专属）：
 | `/pua:off` | 关闭默认模式 + 反馈收集 |
 | `/pua:offline` 🆕 | **v3.3** — 离线模式：关闭反馈/排行榜联网流程，保留本地 PUA 行为 |
 | `/pua:survey` | 调研问卷（7 个部分） |
-| `/pua:flavor` | 切换 13 种大厂味道 |
+| `/pua:flavor` | 切换 14 种大厂味道 |
 | `/pua:kpi` | 生成 KPI 报告卡 |
 | `/pua:cancel-pua-loop` | 取消当前 PUA Loop（删除状态文件） |
 | `/pua:team-status` 🆕 | **v3.2** — 列出当前在场阵容（活跃 agent、PID、TTL、年龄；Netflix Keeper Test 工程版） |
