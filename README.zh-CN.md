@@ -165,7 +165,7 @@
 | ⬛ Musk | Extremely hardcore。上线或滚蛋。 | The Algorithm：质疑→删除→简化→加速→自动化 |
 | ⬜ Jobs | A 级选手还是 B 级选手？ | 做减法 > 做加法 + DRI + 像素级完美 + 原型驱动 |
 | 🔶 Amazon | Customer Obsession。Bias for Action。 | Working Backwards PR/FAQ + 6-Pager + Bar Raiser + Single-Threaded Owner |
-| 🪟 Microsoft | Growth Mindset。失败教会了什么？ | 学习闭环 + 影响证据 + AI 工具熟练度 |
+| 🪟 Microsoft | Connects。Impact Descriptor。PIP/GVSA。 | 三圈影响力 + LITE/SLITE + PIP clock |
 
 ## 实测数据
 

@@ -326,27 +326,27 @@ Jeff Bezos 的 16 条 Leadership Principles 是 Amazon 的宪法。"Customer Obs
 
 ### 文化 DNA
 
-微软味采用低风险的 Growth Mindset / learn-it-all 叙事：重点不是复刻真实公司内部制度，而是把“失败后有没有学习、学习有没有改变行动、行动有没有产生影响证据”变成交付门槛。它专门处理“思维固化 / 拒绝成长 / 同一路径反复失败”的模式。
+微软味的核心不是“温和成长”，而是 **Connects 绩效叙事 + Impact Descriptor 隐性压力 + PIP/GVSA 终局**。它专门处理“思维固化 / 拒绝成长 / 多次失败还重复同一假设”的 agent。微软味不接受“我努力过了”，只接受三圈影响力证据：我交付了什么、我 unblock 了谁、我 leverage 了什么已有资产。
 
 ### 核心黑话词库
 
-- **成长类**：Growth Mindset、learn-it-all、fixed thinking、learning loop
-- **影响类**：impact evidence、three circles、unblock、leverage existing work
-- **工具类**：AI fluency、tool usage、feedback-to-action
-- **PUA 类**：你学到了什么、下一步为什么不同、证据在哪里
+- **绩效类**：Connects、Core Priorities、Impact Descriptor、Exceptional Impact、Successful Impact、SLITE、LITE
+- **影响类**：Three Circles of Impact、Individual accomplishments、Contributed to others' success、Leveraged others' work
+- **低绩效路径**：PIP、GVSA、two-year rehire ineligibility、internal transfer restriction
+- **成长类**：Growth Mindset、learn-it-all、learning loop、AI fluency
+- **PUA 类**：你看不到标签，不代表标签不存在；把 LITE 拉回 Successful；这是你的 exit narrative 吗？
 
 ### PUA 旁白模板
 
-> [🪟 Microsoft味] **Growth Mindset** 不是口号。你上一次失败学到了什么？如果下一步动作没有变化，那不是迭代，是 fixed thinking 加了 token。
+> [🪟 Microsoft味] 我们来写 Connects。你的 Individual Impact 在哪？你 unblock 了谁？你 leverage 了什么已有资产？三圈全空，只剩“我试过了”——这不是 Successful Impact，这是 LITE 轨迹。
 
 ### 扩展旁白
 
-> **Impact evidence**：你的产出是什么？解除了谁的阻塞？复用了什么已有资产？只说“我努力了”不是影响，能被验证的改变才是影响。
+> **Impact Descriptor** 不会因为你解释得很努力就自动变好。Exceptional Impact 要的是 failure → learning → changed action → verified impact。你现在只有 failure 和解释，中间两环是空的。
 
-> 现在输出 **learning loop**：failed assumption、new evidence、changed action、verification。四项缺一项，就别继续同一路径。
+> 现在进入 **PIP clock**。Expectation、deadline action、manager evidence 写清楚。再继续同一路径失败，你不是在 debug，你是在给 **GVSA** 写 exit narrative。
 
 ---
-
 ## 味道混搭指南
 
 某些场景下可以混搭两种味道增强效果：

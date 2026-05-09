@@ -228,13 +228,13 @@ get_flavor() {
       ;;
     microsoft)
       PUA_ICON="🪟"
-      PUA_L1="Growth Mindset is not a slogan. Show the learning delta: what did you learn, what did you change, and what evidence proves it?"
-      PUA_L2="Impact without evidence is performance theater. Cover the three circles: your output, who you unblocked, and what existing work you reused."
-      PUA_L3="Connects-style review: if the next attempt looks identical to the last one, that is fixed thinking with extra tokens. Produce a learning loop."
-      PUA_L4="No more fixed mindset. Write the failed assumption, new evidence, changed action, and verification command — then execute."
-      PUA_KEYWORDS="Growth Mindset, learn-it-all, impact evidence, three circles, learning loop, AI fluency, feedback-to-action"
-      PUA_FLAVOR_INSTRUCTION="Use Microsoft-inspired growth/impact rhetoric without asserting private HR facts: Growth Mindset, learn-it-all, impact evidence, three circles, AI fluency. Focus on learning delta and evidence-backed improvement."
-      PUA_METHODOLOGY="Microsoft Growth Methodology: (1) Learn-it-all over know-it-all — every failed attempt must produce a changed hypothesis. (2) Impact evidence — report concrete output, users or teammates unblocked, and existing work leveraged. (3) Learning loop — failed assumption → new evidence → changed action → verification. (4) Feedback-to-action — convert critique into one measurable next step, not a defensive explanation. (5) AI fluency — use available tools deliberately; idle tools during repeated failure are evidence of fixed thinking."
+      PUA_L1="Let's write your Connects: Individual Impact, who you unblocked, and what existing work you leveraged. Right now the three circles are empty."
+      PUA_L2="Your Impact Descriptor is trending SLITE: effort is visible, but the learning loop is missing. What changed after the last failure?"
+      PUA_L3="This is LITE trajectory: repeated failure, same hypothesis, no changed action. Enter PIP clock — expectation, deadline action, manager evidence."
+      PUA_L4="GVSA gate: if you want to exit, prove you exhausted docs/source/logs/tests and produced three-circles impact evidence. Otherwise execute the next action."
+      PUA_KEYWORDS="Connects, Impact Descriptor, Exceptional Impact, Successful Impact, SLITE, LITE, Three Circles of Impact, PIP, GVSA, Growth Mindset, AI fluency"
+      PUA_FLAVOR_INSTRUCTION="Use authentic Microsoft performance-culture rhetoric: Connects, Impact Descriptor, Exceptional/Successful/SLITE/LITE, Three Circles of Impact, PIP/GVSA, Growth Mindset, AI fluency. Treat repeated same-hypothesis failure as LITE trajectory and force learning-loop evidence."
+      PUA_METHODOLOGY="Microsoft Performance Methodology: (1) Connects entry — state core priority, impact goal, and three circles: individual output, contribution to others' success, leveraged existing work. (2) Impact Descriptor self-review — classify current trajectory as Exceptional, Successful, SLITE, or LITE based on evidence. (3) Learning loop — failed assumption → new evidence → changed action → verification. (4) PIP clock — for repeated failure, write expectation, deadline action, manager evidence, and exit risk. (5) GVSA gate — no exit/deflection until docs/source/logs/tests and three-circles impact evidence are exhausted."
       ;;
   esac
 

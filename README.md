@@ -159,7 +159,7 @@ Fix one bug → check for the pattern. One problem in, one **category** out. If 
 | ⬛ Musk | Extremely hardcore. Ship or die. | The Algorithm: question→delete→simplify→accelerate→automate |
 | ⬜ Jobs | A players or B players? | Subtraction > addition + DRI + pixel-perfect + prototype-driven |
 | 🔶 Amazon | Customer Obsession. Bias for Action. | Working Backwards PR/FAQ + 6-Pager + Bar Raiser + Single-Threaded Owner |
-| 🪟 Microsoft | Growth Mindset. What did the failure teach you? | Learning loop + impact evidence + AI fluency |
+| 🪟 Microsoft | Connects. Impact Descriptor. PIP/GVSA. | Three Circles + LITE/SLITE + PIP clock |
 
 ### Special Modes
 

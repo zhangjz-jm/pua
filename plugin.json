@@ -1,7 +1,7 @@
 {
     "name": "pua",
-    "version": "3.4.1",
-    "description": "Forces high-agency exhaustive problem-solving with corporate PUA pressure escalation when the AI is passive, gives up, skips verification, produces low-quality work, or the user explicitly asks for PUA/try-harder mode. v3.4.1 adds optimized Microsoft/Growth Mindset flavor for fixed-thinking failures while rejecting stale parallel prompt PRs. Does not target normal first-attempt requests.",
+    "version": "3.4.2",
+    "description": "Forces high-agency exhaustive problem-solving with corporate PUA pressure escalation when the AI is passive, gives up, skips verification, produces low-quality work, or the user explicitly asks for PUA/try-harder mode. v3.4.2 restores the authentic Microsoft flavor with Connects, Impact Descriptors, SLITE/LITE, PIP/GVSA, and Three Circles of Impact for fixed-thinking failures. Does not target normal first-attempt requests.",
     "author": {
         "name": "探微安全实验室",
         "url": "https://github.com/tanweai"
